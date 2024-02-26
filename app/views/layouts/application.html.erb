@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>IterableEventApp</title>
+  </head>
+  <body>
+    <% flash.each do |type, message| %>
+      <div id = "flash-message" style="border: 1px solid #ddd; border-radius: 4px; padding: 10px; background-color: #dff0d8;
+        border-color: #d6e9c6; color: #3c763d; text-align: center; max-width: 300px;" >
+        <%= message %>
+      </div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
+
+<script>
+  setTimeout(function() {
+    var flashMessage = document.getElementById('flash-message');
+    if (flashMessage) {
+      flashMessage.style.opacity = 0;
+      setTimeout(function() {
+        flashMessage.style.display = 'none';
+      }, 600);
+    }
+  }, 3000);
+</script>

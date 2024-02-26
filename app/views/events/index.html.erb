@@ -1,0 +1,53 @@
+<div style="text-align: right; margin-top: 20px; margin-right: 130px;" >
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+</div>
+
+<h1 style="text-align: center;" >Events</h1>
+
+<div style="text-align: center; margin-top: 20px;">
+  <%= form_tag(events_path, method: :get) do %>
+    <%= text_field_tag :search, params[:search], placeholder: 'Search events' %>
+    <%= submit_tag 'Search' %>
+  <% end %>
+
+  <div style="margin-top: 20px; display: flex; justify-content: flex-end; margin-right: 130px; gap: 10px;" >
+    <%= button_to 'Create Event A', create_event_a_events_path %>
+    <%= button_to 'Create Event B', create_event_b_events_path %>
+  </div>
+
+  <style>
+    .tb { border-collapse: collapse; width: 300px; margin: 20px auto; }
+    .tb th, .tb td { padding: 10px; border: solid 1px #777; white-space: nowrap; }
+    .tb th { background-color: lightblue; }
+  </style>
+
+  <table class="tb" >
+    <tr>
+      <th>Content Id </th>              
+      <th>Recurring Campaign Id </th>                      
+      <th>Email </th>
+      <th>Created At </th>              
+      <th>Campaign Id </th>                      
+      <th>Template Id </th>
+      <th>Message Id </th>              
+      <th>Event Type </th>
+    </tr>
+
+    <% @events.each do |event| %>
+      <tr>
+        <td style="text-align: center; vertical-align: middle;" ><%= event['contentId'] %></td>         
+        <td style="text-align: center; vertical-align: middle;" ><%= event['recurringCampaignId'] %></td> 
+        <td style="text-align: center; vertical-align: middle;" ><%= event['email'] %></td>
+        <td style="text-align: center; vertical-align: middle;" ><%= format_created_at(event['createdAt']) %></td>         
+        <td style="text-align: center; vertical-align: middle;" ><%= event['campaignId'] %></td> 
+        <td style="text-align: center; vertical-align: middle;" ><%= event['templateId'] %></td>
+        <td style="text-align: center; vertical-align: middle;" ><%= event['messageId'] %></td>         
+        <td style="text-align: center; vertical-align: middle;" ><%= event['eventType'] %></td>   
+      </tr>
+    <% end %>
+  </table>
+
+  <div>
+    <%= paginate @events, window: 2 %>
+  </div>
+</div>
