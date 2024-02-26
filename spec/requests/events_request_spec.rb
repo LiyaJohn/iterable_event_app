@@ -27,9 +27,6 @@ RSpec.describe 'Events', type: :request do
     end
 
     context 'when there is an error fetching events' do
-      # WebMock.after_request do |request_signature, response|
-      #   puts "Response Body: #{response.body}"
-      # end
       before do
         stub_request(:get, "#{base_url}/api/events/#{email}").
           with(headers: { 'Content-Type' => 'application/json', 'Api-Key' => api_key }).
