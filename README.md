@@ -16,7 +16,7 @@ Follow these steps to set up and run the IterableEventApp:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/LiyaJohn/IterableEventApp.git
+   git clone git@github.com:LiyaJohn/iterable_event_app.git
    cd IterableEventApp
    ```
 2. Install dependencies:
@@ -27,7 +27,8 @@ Follow these steps to set up and run the IterableEventApp:
 3. Set up the database:
 
     ```bash
-    rails db:create db:migrate
+    rails db:create
+    rails db:migrate
     ```
 4. Start the server:
 
